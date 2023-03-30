@@ -32,7 +32,7 @@ export const ContactForm = ({ onSubmit }) => {
 
   return (
     <div>
-      <Form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label>
           Name
           <input
@@ -59,7 +59,7 @@ export const ContactForm = ({ onSubmit }) => {
           />
         </label>
         <button type="submit">Add contact</button>
-      </Form>
+      </form>
     </div>
   );
 };

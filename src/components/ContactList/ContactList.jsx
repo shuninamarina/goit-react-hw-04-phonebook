@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export const ContactsList = ({ contactList, deleteContact }) => {
   return (
-    <Table>
+    <table>
       <tbody>
         {contactList.map(contact => {
           return (
@@ -18,7 +18,7 @@ export const ContactsList = ({ contactList, deleteContact }) => {
           );
         })}
       </tbody>
-    </Table>
+    </table>
   );
 };
 
