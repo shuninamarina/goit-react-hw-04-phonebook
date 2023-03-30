@@ -13,10 +13,10 @@ export const App = () => {
     const parsedContactsStorage = JSON.parse(contactsStorage);
     return parsedContactsStorage || [];
   });
-  const [filter, setFilter] = useState ("");
+  const [filter, setFilter] = useState('');
   useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts))
-  }, [contacts])
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
 
   const updateContacts = ({ name, number }) => {
     const contactExists = contacts.find(contact => {
@@ -29,16 +29,14 @@ export const App = () => {
           `Contact with name ${name} and number ${number} already exists`,
           'Okay'
         )
-      : setContacts(prevState => 
-           [
-            ...prevState,
-            {
-              name,
-              number,
-              id: nanoid(),
-            },
-          ],
-        );
+      : setContacts(prevState => [
+          ...prevState,
+          {
+            name,
+            number,
+            id: nanoid(),
+          },
+        ]);
   };
 
   const filterContacts = e => {
@@ -46,30 +44,28 @@ export const App = () => {
   };
 
   const deleteContacts = id => {
-    setContacts(prevState => 
-      prevState.filter(contact => contact.id !== id),
-    );
+    setContacts(prevState => prevState.filter(contact => contact.id !== id));
   };
 
-    const normalizedFilter = filter.toLowerCase();
-    const filteredContacts = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter)
-    );
-    return (
-      <>
-        <Section title="Phonebook">
-          <ContactForm onSubmit={updateContacts} />
-        </Section>
-        <Section title="Contacts">
-          <Filter value={filter} filter={filterContacts} />
-          <ContactsList
-            contactList={filteredContacts}
-            deleteContact={deleteContacts}
-          />
-        </Section>
-      </>
-    );
-  }
+  const normalizedFilter = filter.toLowerCase();
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(normalizedFilter)
+  );
+  return (
+    <>
+      <Section title="Phonebook">
+        <ContactForm onSubmit={updateContacts} />
+      </Section>
+      <Section title="Contacts">
+        <Filter value={filter} filter={filterContacts} />
+        <ContactsList
+          contactList={filteredContacts}
+          deleteContact={deleteContacts}
+        />
+      </Section>
+    </>
+  );
+};
 
 App.propTypes = {
   name: PropTypes.string,
