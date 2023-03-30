@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 
 export const Section = ({ title, children }) => {
   return (
-    <ContactListContainer>
+    <div>
       <h1>{title}</h1>
       {children}
-    </ContactListContainer>
+    </div>
   );
 };
 
